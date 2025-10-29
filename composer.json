@@ -1,0 +1,12 @@
+{
+    "autoload": {
+      "psr-4": {
+          "Src\\": "core/Src/",
+          "": "app/"
+      }
+  },
+    "require": {
+        "illuminate/database": "^12.35",
+        "illuminate/events": "^12.35"
+    }
+}
