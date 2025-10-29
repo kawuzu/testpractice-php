@@ -4,7 +4,7 @@ namespace Middlewares;
 
 use Exception;
 use Src\Request;
-use Src\Session;
+use Src\Auth\Session;
 class CSRFMiddleware
 {
     public function handle(Request $request): void
