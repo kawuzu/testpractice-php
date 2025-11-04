@@ -2,7 +2,6 @@
 use Src\Route;
 use Controller\AdminController;
 use Controller\BuildingController;
-use Controller\RoomController;
 use Controller\ReportController;
 
 // --- Пример главной ---
@@ -15,10 +14,6 @@ Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
 
 // --- Здания ---
 Route::add('GET', '/buildings', [BuildingController::class, 'index'])->middleware('auth');
-//Route::add('GET', '/buildings/create', [BuildingController::class, 'create'])->middleware('auth');
-
-// --- Помещения ---
-//Route::add('GET', '/rooms', [RoomController::class, 'index'])->middleware('auth');
 
 // --- Отчёты ---
 Route::add('GET', '/reports', [ReportController::class, 'index'])->middleware('auth');
