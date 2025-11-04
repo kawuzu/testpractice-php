@@ -10,8 +10,9 @@ class User extends Model implements IdentityInterface
     public $timestamps = false;
     protected $fillable = [
         'name',
+        'full_name',
         'login',
-        'password'
+        'password',
     ];
     protected static function booted()
     {

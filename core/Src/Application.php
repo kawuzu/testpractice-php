@@ -32,8 +32,13 @@ class Application
                 return $this->route;
             case 'auth':
                 return $this->auth;
+            case 'view':                                     // ✅ добавляем
+                if (!isset($this->view)) {                   // ✅ лениво создаём View
+                    $this->view = new \Src\View();
+                }
+                return $this->view;
         }
-                throw new Error('Accessing a non-existent property');
+        throw new Error('Accessing a non-existent property');
     }
 
     private function dbRun ()
