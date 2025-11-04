@@ -1,12 +1,15 @@
 <?php
 namespace Src;
+
 use Exception;
+
 class View
 {
     private string $view = '';
     private array $data = [];
     private string $root = '';
     private string $layout = '/layouts/main.php';
+
     public function __construct(string $view = '', array $data = [])
     {
         $this->root = $this->getRoot();
@@ -26,31 +29,45 @@ class View
     {
         return $this->root . $this->layout;
     }
-//Путь до текущего шаблона
+
+    // Путь до текущего шаблона
     private function getPathToView(string $view = ''): string
     {
         $view = str_replace('.', '/', $view);
         return $this->getRoot() . "/$view.php";
     }
-    public function render(string $view = '', array $data = []):
-    string
+
+    public function render(string $view = '', array $data = []): string
     {
+        // ✅ Если параметры не переданы — используем сохранённые в объекте
+        if ($view === '') {
+            $view = $this->view;
+        }
+
+        if (empty($data)) {
+            $data = $this->data;
+        }
+
         $path = $this->getPathToView($view);
-        if (file_exists($this->getPathToMain()) &&
-            file_exists($path)) {
-//Импортирует переменные из массива в текущую таблиц символов
-extract($data, EXTR_PREFIX_SAME, '');
-//Включение буферизации вывода
-ob_start();
-require $path;
-//Помещаем буфер в переменную и очищаем его
-$content = ob_get_clean();
-//Возвращаем собранную страницу
-  return (string) include $this->getPathToMain();
-//return require($this->getPathToMain());
-}
+
+        if (file_exists($this->getPathToMain()) && file_exists($path)) {
+            // Импортируем переменные из массива в текущую таблицу символов
+            extract($data, EXTR_PREFIX_SAME, '');
+
+            // Включаем буферизацию вывода
+            ob_start();
+            require $path;
+
+            // Помещаем буфер в переменную и очищаем его
+            $content = ob_get_clean();
+
+            // Возвращаем собранную страницу с layout
+            return (string) include $this->getPathToMain();
+        }
+
         throw new Exception('Error render');
     }
+
     public function __toString(): string
     {
         return $this->render($this->view, $this->data);
