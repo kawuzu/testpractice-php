@@ -5,6 +5,8 @@
        style="display:inline-block;margin-bottom:10px;">➕ Добавить здание</a>
 <?php endif; ?>
 
+<a href="<?= app()->route->getUrl('/rooms') ?>">посмотреть все помещения </a>
+
 <table border="1" cellpadding="6" cellspacing="0" width="100%">
     <tr style="background:#e9f7ef;">
         <th>ID</th>
@@ -28,6 +30,7 @@
                 <?php endif; ?>
             </td>
         </tr>
+
     <?php endforeach; ?>
 
     <?php if (count($buildings) === 0): ?>
