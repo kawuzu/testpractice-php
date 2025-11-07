@@ -4,9 +4,11 @@ use Controller\AdminController;
 use Controller\BuildingController;
 use Controller\ReportController;
 use Controller\RoomController;
+use Controller\SearchController;
 
-// --- Пример главной ---
-Route::add('GET', '/hello', [Controller\Site::class, 'hello'])->middleware('auth');
+// --- Главная страница с поиском ---
+Route::add('GET', '/search', [BuildingController::class, 'searchAll'])->middleware('auth');
+
 
 // --- Авторизация ---
 Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup']);
@@ -15,9 +17,11 @@ Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
 
 // --- Здания ---
 Route::add('GET', '/buildings', [BuildingController::class, 'index'])->middleware('auth');
+Route::add('GET', '/buildings/search', [BuildingController::class, 'search'])->middleware('auth'); // 🔍 добавляем поиск
 Route::add('GET', '/buildings/create', [BuildingController::class, 'create'])->middleware('auth');
 Route::add('POST', '/buildings', [BuildingController::class, 'store'])->middleware('auth');
 Route::add('GET', '/buildings/delete/{id}', [BuildingController::class, 'delete'])->middleware('auth');
+
 
 // --- Помещения ---
 Route::add('GET', '/rooms', [RoomController::class, 'index'])->middleware('auth');
@@ -37,3 +41,8 @@ Route::add('GET', '/admin/users/create', [AdminController::class, 'create'])->mi
 Route::add('POST', '/admin/users/store', [AdminController::class, 'store'])->middleware('auth');
 Route::add('POST', '/admin/users/update', [AdminController::class, 'update'])->middleware('auth');
 Route::add('GET', '/admin/users/delete', [AdminController::class, 'delete'])->middleware('auth');
+
+// --- Поиск ---
+Route::add('GET', '/search/buildings', [BuildingController::class, 'searchBuildings'])->middleware('auth');
+Route::add('GET', '/search/rooms', [RoomController::class, 'searchRooms'])->middleware('auth');
+Route::add('GET', '/hello', [Controller\Site::class, 'hello'])->middleware('auth');

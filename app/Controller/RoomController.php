@@ -121,4 +121,27 @@ class RoomController
         Room::destroy($id);
         app()->route->redirect('/rooms');
     }
+
+    // 🔍 Поиск помещений по названию или типу (AJAX)
+    public function searchRooms(Request $request)
+    {
+        $query = trim($request->body['query'] ?? $_GET['query'] ?? '');
+
+        if ($query === '') {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode([]);
+            exit;
+        }
+
+        $rooms = \Model\Room::join('buildings', 'rooms.building_id', '=', 'buildings.id')
+            ->where('rooms.name', 'like', "%{$query}%")
+            ->orWhere('rooms.type', 'like', "%{$query}%")
+            ->select('rooms.id', 'rooms.name', 'rooms.type', 'rooms.area', 'rooms.seats', 'buildings.name as building_name')
+            ->get();
+
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($rooms, JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
 }

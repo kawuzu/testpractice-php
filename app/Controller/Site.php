@@ -28,17 +28,15 @@ class Site
 
     public function hello(): string
     {
-        return (new View())->render('site.hello', ['message' => 'главная всё ок']);
-    }
+        $user = app()->auth->user();
 
-//    public function signup(Request $request): string
-//    {
-//        if ($request->method === 'POST' && User::create($request->all()))
-//        {
-//            app()->route->redirect('/go');
-//        }
-//        return new View('site.signup');
-//    }
+        // Если пользователь не авторизован
+        if (!$user) {
+            return (new View('site.login', ['message' => 'Сначала выполните вход']))->render();
+        }
+
+        return (new View('site.hello', ['user' => $user]))->render();
+    }
     public function signup(Request $request): string
     {
         if ($request->method === 'POST') {
