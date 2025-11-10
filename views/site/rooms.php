@@ -11,7 +11,6 @@
 
 <table border="1" cellpadding="6" cellspacing="0" width="100%" id="rooms-table">
     <tr style="background:#e9f7ef;">
-        <th>ID</th>
         <th>Название</th>
         <th>Тип</th>
         <th>Площадь</th>
@@ -22,16 +21,16 @@
     <tbody id="rooms-body">
     <?php foreach ($rooms as $r): ?>
         <tr>
-            <td><?= $r->id ?></td>
             <td><?= htmlspecialchars($r->name) ?></td>
             <td><?= htmlspecialchars($r->type) ?></td>
             <td><?= $r->area ?></td>
             <td><?= $r->seats ?></td>
             <td><?= htmlspecialchars($r->building_name) ?></td>
             <td>
-                <a href="<?= app()->route->getUrl('/rooms/edit/' . $r->id) ?>">Редактировать</a>
                 <?php if (app()->auth->user()->role === 'admin'): ?>
-                    | <a href="<?= app()->route->getUrl('/rooms/delete/' . $r->id) ?>" style="color:red" onclick="return confirm('Удалить помещение?')">Удалить</a>
+                    <a href="<?= app()->route->getUrl('/rooms/delete/' . $r->id) ?>" style="color:red" onclick="return confirm('Удалить помещение?')">Удалить</a>
+                <?php else: ?>
+                   <p style="color:gray"> у вас нет доступных действий </p>
                 <?php endif; ?>
             </td>
         </tr>
@@ -56,14 +55,17 @@
         data.forEach(r => {
             tbody.insertAdjacentHTML('beforeend', `
             <tr>
-                <td>${r.id}</td>
                 <td>${r.name}</td>
                 <td>${r.type}</td>
                 <td>${r.area}</td>
                 <td>${r.seats}</td>
                 <td>${r.building_name}</td>
                 <td>
-                    <a href="<?= app()->route->getUrl('/rooms/edit/') ?>${r.id}">Редактировать</a>
+                   <?php if (app()->auth->user()->role === 'admin'): ?>
+                    <a href="<?= app()->route->getUrl('/rooms/delete/' . $r->id) ?>" style="color:red" onclick="return confirm('Удалить помещение?')">Удалить</a>
+                <?php else: ?>
+                   <p style="color:gray"> у вас нет доступных действий </p>
+                <?php endif; ?>
                 </td>
             </tr>
         `);
