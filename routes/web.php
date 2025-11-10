@@ -33,7 +33,9 @@ Route::add('GET', '/rooms/delete/{id}', [RoomController::class, 'delete'])->midd
 Route::add('GET', '/buildings/{id}/rooms', [RoomController::class, 'byBuilding'])->middleware('auth');
 
 // --- Отчёты ---
-Route::add('GET', '/reports', [ReportController::class, 'index'])->middleware('auth');
+//Route::add('GET', '/reports', [ReportController::class, 'index'])->middleware('auth');
+Route::add('GET', '/reports', [Controller\ReportController::class, 'index'])->middleware('auth');
+
 
 // --- Админ-панель пользователей ---
 Route::add('GET', '/admin/users', [AdminController::class, 'index'])->middleware('auth');
@@ -46,3 +48,4 @@ Route::add('GET', '/admin/users/delete', [AdminController::class, 'delete'])->mi
 Route::add('GET', '/search/buildings', [BuildingController::class, 'searchBuildings'])->middleware('auth');
 Route::add('GET', '/search/rooms', [RoomController::class, 'searchRooms'])->middleware('auth');
 Route::add('GET', '/hello', [Controller\Site::class, 'hello'])->middleware('auth');
+
