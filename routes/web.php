@@ -47,5 +47,5 @@ Route::add('GET', '/admin/users/delete', [AdminController::class, 'delete'])->mi
 // --- Поиск ---
 Route::add('GET', '/search/buildings', [BuildingController::class, 'searchBuildings'])->middleware('auth');
 Route::add('GET', '/search/rooms', [RoomController::class, 'searchRooms'])->middleware('auth');
-Route::add('GET', '/hello', [Controller\Site::class, 'hello'])->middleware('auth');
+Route::add('GET', '/hello', [Controller\Site::class, 'hello'])->middleware('auth'); //удалить hello, оставить пустым
 

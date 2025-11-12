@@ -31,8 +31,8 @@
                     <input type="hidden" name="id" value="<?= $u->id ?>">
                     <select name="role" style="padding:3px 6px;">
                         <option value="admin" <?= $u->role === 'admin' ? 'selected' : '' ?>>Администратор</option>
-                        <option value="staff" <?= $u->role === 'staff' ? 'selected' : '' ?>>Сотрудник</option>
-                        <option value="staff" <?= $u->role === 'worker' ? 'selected' : '' ?>>Сотрудник деканата</option>
+                        <option value="staff" <?= $u->role === 'staff' ? 'selected' : '' ?>>Сотрудник деканата</option>
+                        <option value="staff" <?= $u->role === 'worker' ? 'selected' : '' ?>>Сотрудник </option>
                     </select>
                     <button style="background:#4CAF50; color:white; border:none; padding:4px 8px; margin-left:4px;">Сохранить</button>
                 </form>
