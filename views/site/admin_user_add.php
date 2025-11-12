@@ -1,29 +1,24 @@
 <h2>Добавление нового сотрудника</h2>
 
-<form method="post" action="<?= app()->route->getUrl('/admin/users/store') ?>" style="max-width:400px;">
-    <!-- CSRF-токен для безопасности -->
+<form method="post" action="<?= app()->route->getUrl('/admin/users/store') ?>">
     <input type="hidden" name="csrf_token" value="<?= app()->auth::generateCSRF() ?>">
 
-    <label>Имя:<br>
+    <label>Имя:
         <input type="text" name="name" required>
-    </label><br>
+    </label>
 
-    <label>ФИО:<br>
+    <label>ФИО:
         <input type="text" name="full_name" required>
-    </label><br>
+    </label>
 
-    <label>Логин:<br>
+    <label>Логин:
         <input type="text" name="login" required>
-    </label><br>
+    </label>
 
-    <label>Пароль:<br>
+    <label>Пароль:
         <input type="password" name="password" required>
-    </label><br>
+    </label>
 
-    <button style="background:#4CAF50; color:white; border:none; padding:6px 10px; border-radius:4px;">
-        Создать
-    </button>
-    <a href="<?= app()->route->getUrl('/admin/users') ?>" style="margin-left:10px; text-decoration:none; color:#333;">
-        Назад
-    </a>
+    <button>Создать</button>
+    <a class="add-btn" href="<?= app()->route->getUrl('/admin/users') ?>">Назад</a>
 </form>

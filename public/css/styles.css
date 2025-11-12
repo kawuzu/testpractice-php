@@ -1,87 +1,210 @@
-/* Минималистичная темная тема с плашками */
 :root {
-    --text-main: #FFFFFF;
-    --text-muted: #D7D5D5;
-    --accent: #68A691;
-    --card-bg: #36494E;
-    --alert: #C03221;
-    --bg-dark: #1E1E24;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bg-light: #FFFFFF;        /* светлый фон, для контраста */
+    --bg-dark: #36494E;         /* основной тёмный фон */
+    --accent-green: #68A691;    /* зелёный для кнопок, акцентов */
+    --accent-dark-green: #C03221; /* красный для кнопок удаления / опасных действий */
+    --text-light: #FFFFFF;      /* светлый текст */
+    --text-dark: #D7D5D5;      /* основной текст */
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-dark);
-    color: var(--text-main);
-    padding: 40px;
-    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
 }
 
-h2 {
-    color: var(--accent);
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 2rem;
-}
-
-p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-strong {
-    color: var(--accent);
-}
-
-/* Навигация */
-nav {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text-main);
-    background-color: var(--card-bg);
-    padding: 10px 20px;
-    border-radius: 12px;
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-nav a:hover {
-    background-color: var(--accent);
-    color: var(--bg-dark);
-    transform: translateY(-2px);
-}
-
-/* Плашка для предупреждений */
-.info-box {
-    background-color: var(--card-bg);
+header {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
     padding: 15px 20px;
-    border-left: 5px solid var(--alert);
-    border-radius: 10px;
-    color: var(--text-muted);
-    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Адаптивность */
-@media (max-width: 600px) {
-    body {
-        padding: 20px;
-    }
-    nav a {
-        flex: 1 1 100%;
-        justify-content: center;
-    }
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 15px;
+}
+
+nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: var(--accent-green);
+}
+
+main {
+    padding: 20px;
+}
+
+.card {
+    background-color: var(--bg-dark);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+table th {
+    background-color: var(--accent-green);
+    color: var(--text-light);
+    padding: 10px;
+    text-align: left;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--accent-green);
+}
+
+button {
+    background-color: var(--accent-green);
+    color: var(--text-light);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: var(--accent-dark-green);
+}
+
+a.add-btn {
+    display: inline-block;
+    margin: 10px 0;
+    background-color: var(--accent-green);
+    color: var(--text-light);
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+a.add-btn:hover {
+    background-color: var(--accent-dark-green);
+}
+
+a {
+    color: var(--accent-green);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-dark-green);
+}
+
+form {
+    background-color: var(--bg-dark);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: var(--text-light);
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--accent-green);
+    border-radius: 4px;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--bg-dark);
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+h2, h3 {
+    color: var(--accent-green);
+    margin-top: 0;
+}
+
+p, span {
+    color: var(--text-light);
+}
+
+td a {
+    color: var(--accent-green);
+}
+
+td a:hover {
+    color: var(--accent-dark-green);
+}
+
+/* Красный для опасных действий */
+.danger {
+    color: var(--accent-dark-green);
+    font-weight: bold;
+}
+
+/* Поля поиска */
+input[type="search"], input[type="text"].search {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--accent-green);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+/* Уведомления */
+pre {
+    background-color: #222;
+    color: var(--text-light);
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
 }
