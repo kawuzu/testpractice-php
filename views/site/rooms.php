@@ -1,4 +1,4 @@
-<h2>Помещения</h2>
+<h1 style="color:#2a6f2b;">Помещения</h1>
 
 <input
         type="text"

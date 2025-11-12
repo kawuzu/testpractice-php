@@ -1,9 +1,9 @@
-<h2>Здания</h2>
+<h1 style="color:#2a6f2b;">Здания</h1>
 
 <input
         type="text"
         id="searchBuilding"
-        placeholder="🔍 Поиск по зданиям..."
+        placeholder="🔍 Поиск по зданиям"
         style="padding:8px;width:300px;margin-bottom:10px;"
 >
 

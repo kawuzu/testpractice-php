@@ -1,4 +1,4 @@
-<h2>Авторизация</h2>
+<h1 style="color:#2a6f2b;">Авторизация</h1>
 <h3><?= $message ?? ''; ?></h3>
 <h3><?= app()->auth->user()->name ?? ''; ?></h3>
 <?php

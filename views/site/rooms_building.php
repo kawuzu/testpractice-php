@@ -1,4 +1,4 @@
-<h2>Помещения здания: <?= htmlspecialchars($building->name) ?></h2>
+<h1 style="color:#2a6f2b;">Помещения здания: <?= htmlspecialchars($building->name) ?></h1>
 
 <?php if (in_array(app()->auth->user()->role, ['admin', 'staff'])): ?>
     <a href="<?= app()->route->getUrl('/rooms/create') ?>"

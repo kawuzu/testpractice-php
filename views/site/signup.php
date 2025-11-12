@@ -1,4 +1,4 @@
-<h2>Регистрация нового пользователя</h2>
+<h1 style="color:#2a6f2b;">Регистрация нового пользователя</h1>
 <pre><?= $message ?? ''; ?></pre>
 <form method="post">
     <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>

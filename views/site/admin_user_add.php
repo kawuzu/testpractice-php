@@ -1,4 +1,4 @@
-<h2>Добавление нового сотрудника</h2>
+<h1 style="color:#2a6f2b;">Добавление нового сотрудника</h1>
 
 <form method="post" action="<?= app()->route->getUrl('/admin/users/store') ?>">
     <input type="hidden" name="csrf_token" value="<?= app()->auth::generateCSRF() ?>">

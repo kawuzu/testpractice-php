@@ -1,4 +1,4 @@
-<h2>Добро пожаловать в систему "УМУ Площадь"</h2>
+<h1 style="color:#2a6f2b;">Добро пожаловать в систему "УМУ Площадь"</h1>
 
 <p>Здравствуйте, <strong><?= htmlspecialchars($user->full_name ?? $user->name) ?></strong>!</p>
 

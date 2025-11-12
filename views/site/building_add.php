@@ -1,4 +1,4 @@
-<h2>Добавление нового здания</h2>
+<h1 style="color:#2a6f2b;">Добавление нового здания</h1>
 
 <form method="post" action="<?= app()->route->getUrl('/buildings') ?>" style="max-width:400px;">
     <input type="hidden" name="csrf_token" value="<?= app()->auth::generateCSRF() ?>">

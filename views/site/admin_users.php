@@ -1,4 +1,4 @@
-<h2>Список пользователей</h2>
+<h1 style="color:#2a6f2b;">Список пользователей</h1>
 
 <!-- Кнопка открытия модального окна -->
 <div style="margin-bottom: 15px;">
@@ -9,22 +9,22 @@
 </div>
 
 <!-- Таблица пользователей -->
-<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%;max-width:800px;">
+<table  style="width:60%; border-collapse:collapse; font-family:Arial|sans-serif;">
     <thead style="background:#e8f5e9;">
     <tr>
-        <th>Имя</th>
-        <th>ФИО</th>
-        <th>Логин</th>
-        <th>Роль</th>
-        <th>Действия</th>
+        <th style="padding:8px; text-align:left;">Имя</th>
+        <th style="padding:8px; text-align:left;">ФИО</th>
+        <th style="padding:8px; text-align:left;">Логин</th>
+        <th style="padding:8px; text-align:left;">Роль</th>
+        <th style="padding:8px; text-align:left;">Действия</th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($users as $u): ?>
         <tr>
-            <td><?= htmlspecialchars($u->name) ?></td>
-            <td><?= htmlspecialchars($u->full_name) ?></td>
-            <td><?= htmlspecialchars($u->login) ?></td>
+            <td style="padding:6px;"><?= htmlspecialchars($u->name) ?></td>
+            <td style="padding:6px;"><?= htmlspecialchars($u->full_name) ?></td>
+            <td style="padding:6px;"><?= htmlspecialchars($u->login) ?></td>
             <td>
                 <form method="post" action="<?= app()->route->getUrl('/admin/users/update') ?>" style="display:inline;">
                     <input type="hidden" name="csrf_token" value="<?= app()->auth::generateCSRF() ?>">
@@ -77,14 +77,6 @@
             <label>Пароль:<br>
                 <input type="password" name="password" required>
             </label><br>
-
-<!--            <label>Роль:<br>-->
-<!--                <select name="role" required>-->
-<!--                    <option value="staff">Сотрудник</option>-->
-<!--                    <option value="admin">Администратор</option>-->
-<!--                    <option value="worker">Сотрудник деканата</option>-->
-<!--                </select>-->
-<!--            </label><br><br>-->
 
             <button style="background:#4CAF50; color:white; border:none; padding:6px 10px; border-radius:4px;">
                 Создать

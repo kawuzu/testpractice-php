@@ -3,7 +3,7 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
-class User extends Model implements IdentityInterface
+class user extends Model implements IdentityInterface
 {
     use HasFactory;
 
