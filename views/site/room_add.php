@@ -1,6 +1,6 @@
 <h1 style="color:#2a6f2b;">Добавление нового помещения</h1>
 
-<form method="post" action="<?= app()->route->getUrl('/rooms') ?>" style="max-width:400px;">
+<form method="post" action="<?= app()->route->getUrl('/rooms') ?>";">
     <input type="hidden" name="csrf_token" value="<?= app()->auth::generateCSRF() ?>">
 
     <label>Название:<br>
@@ -17,7 +17,7 @@
     </label><br>
 
     <label>Площадь (м²):<br>
-        <input type="number" step="0.01" name="area" required>
+        <input type="number" min="0" step="1" name="area" required>
     </label><br>
 
     <label>Количество мест:<br>

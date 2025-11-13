@@ -9,7 +9,7 @@
 </div>
 
 <!-- Таблица пользователей -->
-<table  style="width:60%; border-collapse:collapse; font-family:Arial|sans-serif;">
+<table  style="border-collapse:collapse; font-family:Arial|sans-serif;">
     <thead style="background:#e8f5e9;">
     <tr>
         <th style="padding:8px; text-align:left;">Имя</th>
